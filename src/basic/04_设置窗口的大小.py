@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QLineEdit, QDesktopWidget
 import time
+from PyQt5.QtGui import QIcon
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
@@ -39,8 +40,13 @@ if __name__ == '__main__':
     # print(center_point)
     x = center_point.x()
     y = center_point.y()
-    print(x, y)
-    w.move(x-150, y-75)
+    print(w.frameGeometry().getRect())
+    old_x, old_y, width, height = w.frameGeometry().getRect()
+    w.move(x - width/2, y - height/2)
+
+    # 设置窗口图标
+    w.setWindowIcon(QIcon('../img/Panda.ico'))
+
 
 
     w.show()
